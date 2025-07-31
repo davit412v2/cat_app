@@ -1,5 +1,6 @@
 import 'package:cat_breed_app/home/ui/screen/home.screen.dart';
 import 'package:cat_breed_app/menu_footer/view_model/menu_footer.view_model.dart';
+import 'package:cat_breed_app/voting/ui/screen/vote.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -15,7 +16,7 @@ class MenuFooterScreen extends StackedView<MenuFooterViewModel> {
     appBar: AppBar(title: Text("Cat App")),
     body: IndexedStack(
       index: viewModel.currentIndex,
-      children: const [HomeScreen(), HomeScreen()],
+      children: const [HomeScreen(), VoteScreen()],
     ),
     bottomNavigationBar: BottomNavigationBar(
       currentIndex: viewModel.currentIndex,
