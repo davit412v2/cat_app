@@ -1,3 +1,4 @@
+import 'package:cat_breed_app/home/ui/widget/item_breed.widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -5,6 +6,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(color: Colors.blueGrey, child: Text("Home"),);
+    return ListView.builder(
+      itemCount: 5,
+      itemBuilder: (context, v) => ItemBreedWidget(onTap: (){}));
   }
 }

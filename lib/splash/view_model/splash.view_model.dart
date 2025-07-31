@@ -15,7 +15,7 @@ class SplashViewModel  extends ReactiveViewModel{
   
   Future<void> init() async {
     await Future.delayed(const Duration(seconds: 5), (){
-          _navigationService.replaceWithHomeScreen();
+          _navigationService.replaceWithMenuFooterScreen();
     });
   }
 }
