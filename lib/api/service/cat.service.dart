@@ -7,20 +7,24 @@ import 'package:stacked/stacked.dart';
 
 class CatService extends BaseService {
   var logger = Logger();
+  final CatRepository _repository;
 
   final allBreedsValue = ReactiveValue<List<Breed>>([]);
   final breedDetailsValue = ReactiveValue<Breed?>(null);
   final searchBreedsValue = ReactiveValue<List<Breed>>([]);
   final imagesForBreedValue = ReactiveValue<List<ImageBreed>>([]);
+  final selectedBreedValue = ReactiveValue<Breed?>(null);
 
-  final CatRepository _repository;
+  
 
   CatService(this._repository) {
     listenToReactiveValues([
+      loadingValue,
       allBreedsValue,
       breedDetailsValue,
       searchBreedsValue,
       imagesForBreedValue,
+      selectedBreedValue,
     ]);
   }
 

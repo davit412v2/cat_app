@@ -1,39 +1,55 @@
+import 'package:cat_breed_app/api/service/cat.service.dart';
+import 'package:cat_breed_app/core/app_setup.router.dart';
+import 'package:cat_breed_app/core/setup_locator.dart';
+import 'package:cat_breed_app/models/breed.model.dart';
+import 'package:cat_breed_app/models/image_breed.model.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
 
 class HomeViewModel extends ReactiveViewModel {
-  // final _catService = locator<CatService>();
+  final _catService = locator<CatService>();
+  final _navigationService = locator<NavigationService>();
 
   @override
-  List<ListenableServiceMixin> get listenableServices => [];
+  List<ListenableServiceMixin> get listenableServices => [_catService];
 
   HomeViewModel(){
-    _getAllBreeds();
+    initSelectedBreed();
   }
 
-  bool get loading => false;
-  // _catService.loadingValue.value;
+  bool get loading => _catService.loadingValue.value;
 
-  // List<Breed> get allBreeds => _catService.allBreedsValue.value;
+  List<Breed> get allBreeds => _catService.allBreedsValue.value;
 
-  // List<ImageBreed> get imagesForBreed => _catService.imagesForBreedValue.value;
+  List<ImageBreed> get imagesForBreed => _catService.imagesForBreedValue.value;
 
-  String? get selectedBreedId =>''; //_catService.selectedBreedIdValue.value;
+  Breed? get selectedBreed => _catService.selectedBreedValue.value;
 
-  set selectedBreedId(String? value) {
-    //_catService.selectedBreedIdValue.value = value;
+  List<ImageBreed> get images => _catService.imagesForBreedValue.value;
+
+  set selectedBreed(Breed? value) {
+    _catService.selectedBreedValue.value = value;
   }
 
-  void onTapItemBreed() {
+  void onBreedSelected(String? value) {
+    selectedBreed = allBreeds.firstWhere((b) => b.id == value);
+    loadImagesForBreed(selectedBreed);
+    rebuildUi();
   }
 
-    void _getAllBreeds() {
-    // _catService
-    //     .getAllBreeds()
-    //     .then((_) {
-         
-    //     })
-    //     .catchError((_) {
-    //       Dialog(child: Card(child: Text("No se encontro")));
-    //     });
+  void initSelectedBreed() async {
+
+        if (allBreeds.isNotEmpty) {
+      await loadImagesForBreed(selectedBreed!);
+    }
+  }
+  
+  Future<void> loadImagesForBreed(Breed? breed) async {
+    if(breed == null) return; 
+    _catService.getImagesForBreed(breed.id!);
+  }
+
+  void goToWikipediaScreen() {
+    _navigationService.navigateToWikipediaScreen();
   }
 }

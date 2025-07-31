@@ -18,14 +18,14 @@ final class _$CatDatasource extends CatDatasource {
   final Type definitionType = CatDatasource;
 
   @override
-  Future<Response<List<Breed>>> getBreeds() {
+  Future<Response<dynamic>> getBreeds() {
     final Uri $url = Uri.parse('/breeds');
     final Request $request = Request(
       'GET',
       $url,
       client.baseUrl,
     );
-    return client.send<List<Breed>, Breed>($request);
+    return client.send<dynamic, dynamic>($request);
   }
 
   @override
@@ -40,7 +40,7 @@ final class _$CatDatasource extends CatDatasource {
   }
 
   @override
-  Future<Response<List<Breed>>> searchBreeds(String query) {
+  Future<Response<dynamic>> searchBreeds(String query) {
     final Uri $url = Uri.parse('/breeds/search');
     final Map<String, dynamic> $params = <String, dynamic>{'q': query};
     final Request $request = Request(
@@ -49,12 +49,12 @@ final class _$CatDatasource extends CatDatasource {
       client.baseUrl,
       parameters: $params,
     );
-    return client.send<List<Breed>, Breed>($request);
+    return client.send<dynamic, dynamic>($request);
   }
 
   @override
-  Future<Response<List<ImageBreed>>> getImagesByBreed(String breedId) {
-    final Uri $url = Uri.parse('/images/search');
+  Future<Response<dynamic>> getImagesByBreed(String breedId) {
+    final Uri $url = Uri.parse('/images/search?limit=10&');
     final Map<String, dynamic> $params = <String, dynamic>{'breed_id': breedId};
     final Request $request = Request(
       'GET',
@@ -62,6 +62,6 @@ final class _$CatDatasource extends CatDatasource {
       client.baseUrl,
       parameters: $params,
     );
-    return client.send<List<ImageBreed>, ImageBreed>($request);
+    return client.send<dynamic, dynamic>($request);
   }
 }

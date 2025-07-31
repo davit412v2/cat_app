@@ -6,10 +6,10 @@ part 'image_breed.model.g.dart';
 @JsonSerializable()
 class ImageBreed {
   final List<Breed>? breeds;
+  final String? id;
+  final String? url;
 
-  ImageBreed({
-    this.breeds,
-  });
+  ImageBreed({this.breeds, this.id, this.url});
 
   factory ImageBreed.fromJson(Map<String, dynamic> json) =>
       _$ImageBreedFromJson(json);

@@ -1,5 +1,4 @@
 import 'package:cat_breed_app/models/breed.model.dart';
-import 'package:cat_breed_app/models/image_breed.model.dart';
 import 'package:chopper/chopper.dart';
 
 part 'cat_datasource.chopper.dart';
@@ -8,7 +7,7 @@ part 'cat_datasource.chopper.dart';
 abstract class CatDatasource extends ChopperService {
   /// Endpoint: Obtener todas las razas
   @GET(path: '/breeds')
-  Future<Response<List<Breed>>> getBreeds();
+  Future<Response> getBreeds();
 
   /// Endpoint: Obtener detalles por id
   @GET(path: '/breeds/{id}')
@@ -16,11 +15,11 @@ abstract class CatDatasource extends ChopperService {
 
   /// Endpoint: Buscar razas
   @GET(path: '/breeds/search')
-  Future<Response<List<Breed>>> searchBreeds(@Query('q') String query);
+  Future<Response> searchBreeds(@Query('q') String query);
 
   /// Endpoint: Imágenes por raza
-  @GET(path: '/images/search')
-  Future<Response<List<ImageBreed>>> getImagesByBreed(@Query('breed_id') String breedId);
+  @GET(path: '/images/search?limit=10&')
+  Future<Response> getImagesByBreed(@Query('breed_id') String breedId);
 
   /// Configuración de API Pública
   static CatDatasource create() {
