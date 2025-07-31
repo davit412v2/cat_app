@@ -4,6 +4,9 @@ import 'package:cat_breed_app/voting/ui/screen/vote.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
+
+/// En MenuFooterScreen se muestra un menú con dos opciones, uno 
+/// para ver las información de la razas y el otro para votar. 
 class MenuFooterScreen extends StackedView<MenuFooterViewModel> {
   const MenuFooterScreen({super.key});
 

@@ -3,6 +3,9 @@ import 'package:cat_breed_app/voting/view_model/vote.view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
+
+/// En VoteScreen Se muestra un carrusel con el nombre y la imagen
+/// de las razas de gatos, adicional con dos botones para calificar.
 class VoteScreen extends StackedView<VoteViewModel> {
   const VoteScreen({super.key});
 

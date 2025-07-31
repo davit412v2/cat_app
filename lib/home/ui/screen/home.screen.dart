@@ -4,6 +4,11 @@ import 'package:cat_breed_app/home/view_model/home.view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
+
+/// En HomeScreen se muestra la información sobre las razas
+/// junto con las imagenes de diferentes gatos que pertenecen
+/// a esa raza, adiciona un botón para acceder la la wikipedia
+/// para mayor información.
 class HomeScreen extends StackedView<HomeViewModel> {
   const HomeScreen({super.key});
 

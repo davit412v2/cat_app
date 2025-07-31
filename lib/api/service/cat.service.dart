@@ -5,6 +5,14 @@ import 'package:cat_breed_app/models/image_breed.model.dart';
 import 'package:logger/logger.dart';
 import 'package:stacked/stacked.dart';
 
+
+/// `CatService` es una clase de servicio responsable de manejar la lógica
+/// relacionada con las razas de gatos y sus imágenes, utilizando el patrón
+/// `ReactiveValue` y siguiendo la arquitectura `Stacked`.
+///
+/// Este servicio interactúa con la clase `CatRepository` para obtener datos
+/// desde la API pública de TheCatAPI, y expone los resultados mediante valores
+/// reactivos para que puedan ser observados por los ViewModels o UI.
 class CatService extends BaseService {
   var logger = Logger();
   final CatRepository _repository;
@@ -28,6 +36,11 @@ class CatService extends BaseService {
     ]);
   }
 
+
+  /// Obtiene la lista de todas las razas de gatos disponibles.
+  ///
+  /// Llama al método `getBreeds` del repository y asigna el resultado
+  /// a `allBreedsValue`.
   Future<void> getAllBreeds() {
     return _repository
         .getBreeds()
@@ -40,6 +53,10 @@ class CatService extends BaseService {
         });
   }
 
+
+  /// Obtiene los detalles de una raza específica usando su `id`.
+  ///
+  /// El resultado se almacena en `breedDetailsValue`.
   Future<void> getBreedDetails(String id) {
     return _repository
         .getBreedById(id)
@@ -52,6 +69,9 @@ class CatService extends BaseService {
         });
   }
 
+  /// Realiza una búsqueda de razas que coincidan con el `query` dado.
+  ///
+  /// El resultado se almacena en `searchBreedsValue`.
   Future<void> searchBreeds(String query) {
     return _repository
         .searchBreeds(query)
@@ -64,6 +84,10 @@ class CatService extends BaseService {
         });
   }
 
+
+  /// Obtiene una lista de imágenes para una raza usando su `breedId`.
+  ///
+  /// El resultado se almacena en `imagesForBreedValue`.
   Future<void> getImagesForBreed(String breedId) {
     return _repository
         .getImagesByBreed(breedId)

@@ -8,8 +8,8 @@ class VoteViewModel extends ReactiveViewModel {
   final _catService = locator<CatService>();
 
   int currentIndex = 0;
-  
-  CarouselSliderController controller = CarouselSliderController() ;
+
+  CarouselSliderController controller = CarouselSliderController();
 
   @override
   List<ListenableServiceMixin> get listenableServices => [_catService];
@@ -18,9 +18,5 @@ class VoteViewModel extends ReactiveViewModel {
 
   int get maxIndex => images.length - 1;
 
-
-
-  void vote(id, bool bool) {
-
-  }
+  void vote(id, bool bool) {}
 }
